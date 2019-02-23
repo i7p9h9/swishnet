@@ -50,11 +50,11 @@ def SwishNet(input_shape, classes):
     _x = layers.Add()([_x, _x_concat])
 
     # 4 block
-    _x_loop1 = __causal_gated_conv1D(filters=16, length=3, strides=1)(_x)
+    _x_loop1 = __causal_gated_conv1D(filters=16, length=3, strides=3)(_x)
     _x = layers.Add()([_x, _x_loop1])
 
     # 5 block
-    _x_loop2 = __causal_gated_conv1D(filters=16, length=3, strides=1)(_x)
+    _x_loop2 = __causal_gated_conv1D(filters=16, length=3, strides=2)(_x)
     _x = layers.Add()([_x, _x_loop2])
 
     # 6 block
